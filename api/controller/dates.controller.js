@@ -1,6 +1,4 @@
 const db = require("../db");
-const axios = require("axios");
-const moment = require("moment");
 
 const REQUEST_ADDRESS = "https://date.nager.at";
 
@@ -20,12 +18,6 @@ class DatesController {
         .json({ code: 400, status: "Error", payload: "Something went wrong" });
     }
   }
-
-  // async getEvent(req, res) {
-  //   try {
-
-  //   }
-  // }
 
   async getAllEvents(req, res) {
     try {
