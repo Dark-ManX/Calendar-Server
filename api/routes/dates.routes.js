@@ -4,7 +4,7 @@ const datesController = require("../controller/dates.controller");
 const { getAllEvents, createEvent, deleteEvent } = datesController;
 const router = new Router();
 
-router.get("/getAll", getAllEvents);
+router.get("/", getAllEvents);
 router.post("/", createEvent);
 router.delete("/:event", deleteEvent);
 
