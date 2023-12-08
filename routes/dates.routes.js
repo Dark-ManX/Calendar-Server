@@ -1,5 +1,5 @@
 const Router = require("express");
-const datesController = require("../controller/dates.controller");
+const datesController = require("../../controller/dates.controller");
 
 const { getAllEvents, getEvent, createEvent, deleteEvent } = datesController;
 const router = new Router();
