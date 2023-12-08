@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const datesRouter = require("./routes/dates.routes");
+const datesRouter = require("../routes/dates.routes");
 
 const app = express();
 
