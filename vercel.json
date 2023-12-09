@@ -8,10 +8,8 @@
   ],
   "routes": [
     {
-      "src": "/events/",
-      "methods": ["GET"]
-    },
-    { "src": "/events/", "methods": ["POST"] },
-    { "src": "/", "methods": ["GET"] }
+      "src": "/(.*)",
+      "dest": "/"
+    }
   ]
 }
