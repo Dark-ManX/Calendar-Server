@@ -1,7 +1,5 @@
 const db = require("../db");
 
-const REQUEST_ADDRESS = "https://date.nager.at";
-
 class DatesController {
   async createEvent(req, res) {
     try {
