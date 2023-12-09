@@ -1,0 +1,10 @@
+const Router = require("express");
+const datesController = require("../api/controller/dates.controller");
+
+const { getAllEvents, createEvent, deleteEvent } = datesController;
+const router = new Router();
+router.get("/", getAllEvents);
+router.post("/", createEvent);
+router.delete("/:event", deleteEvent);
+
+module.exports = router;
