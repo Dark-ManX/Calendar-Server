@@ -19,6 +19,7 @@ class DatesController {
 
   async getAllEvents(req, res) {
     try {
+      console.log("object");
       const events = await db.query(`SELECT * FROM dates`);
 
       res.status(200).json({

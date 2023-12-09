@@ -7,6 +7,7 @@ const app = express();
 
 const PORT = process.env.PORT || 2222;
 
+app.use(express.static("public"));
 app.use(cors());
 app.use(express.json());
 app.use("/events", datesRouter);
