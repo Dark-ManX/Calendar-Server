@@ -10,6 +10,7 @@ const PORT = process.env.PORT || 2222;
 app.use(cors());
 app.use(express.json());
 app.use("/events", datesRouter);
+app.use("/", (req, res) => res.json({ result: "Hello from root page" }));
 
 app.use((req, res) => {
   res.status(404).json({ message: "Not found" });
