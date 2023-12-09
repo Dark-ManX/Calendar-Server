@@ -1,4 +1,4 @@
-const db = require("../api/db");
+const db = require("../db");
 
 const REQUEST_ADDRESS = "https://date.nager.at";
 
