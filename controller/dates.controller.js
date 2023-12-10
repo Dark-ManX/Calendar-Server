@@ -45,10 +45,14 @@ class DatesController {
     try {
       const { event } = req.params;
       const [paramsDate, paramsTitle] = event.split("-");
+      console.log(
+        changeString(paramsDate, "-"),
+        changeString(paramsTitle, " ")
+      );
 
       const deletedEvent = db.query(
         `DELETE FROM dates WHERE (event_date = $1 AND event_title = $2)`,
-        [changeString(paramsDate, "-"), changeString(paramsTitle, " ")]
+        [changeString(paramsDate, " "), changeString(paramsTitle, " ")]
       );
 
       function changeString(str, sign) {
@@ -57,7 +61,7 @@ class DatesController {
 
       res
         .status(200)
-        .json({ code: 200, status: "Success", payload: "deletedEvent" });
+        .json({ code: 200, status: "Success", payload: deletedEvent });
     } catch (err) {
       res
         .status(400)
