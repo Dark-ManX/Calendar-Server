@@ -7,8 +7,9 @@ class DatesController {
 
       console.log("params", date, title);
       const event = await db.query(
-        `INSERT INTO dates VALUES (${date}, ${title})`,
-        [date, title]
+        `INSERT INTO dates VALUES (${date}, ${title})`
+        // ,
+        // [date, title]
       );
 
       res.status(201).json({
