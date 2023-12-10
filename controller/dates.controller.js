@@ -1,17 +1,19 @@
-// const db = require("../db");
+const db = require("../db");
 // import { sql } from "@vercel/postgres";
 
 class DatesController {
   async createEvent(req, res) {
     try {
       const { date, title } = req.body;
-      // const event =
-      //   await sql`INSERT INTO dates (event_date, event_title) VALUES (${date}, ${title})`;
-      // ,[date, title]
+      const event = await db.query(
+        `INSERT INTO dates (event_date, event_title) VALUES (${date}, ${title})`,
+        [date, title]
+      );
+
       res.status(201).json({
         code: 201,
         status: "Created",
-        payload: "event",
+        payload: event,
       });
     } catch (err) {
       res
@@ -22,12 +24,12 @@ class DatesController {
 
   async getAllEvents(req, res) {
     try {
-      // const events = await sql`SELECT * FROM dates`;
+      const events = await db.query(`SELECT * FROM dates`);
 
       res.status(200).json({
         code: 200,
         status: "Success",
-        payload: "events.rows",
+        payload: events.rows,
       });
     } catch (err) {
       res.status(400).json({
@@ -43,12 +45,13 @@ class DatesController {
       const { event } = req.params;
       const [paramsDate, paramsTitle] = event.split("-");
 
-      // const deletedEvent = sql`DELETE FROM dates WHERE (event_date = ${changeString(
-      //   paramsDate,
-      //   "-"
-      // )} AND event_title = ${(paramsTitle, " ")})`;
-      //   ,[changeString(paramsDate, "-"), changeString(paramsTitle, " ")]
-      // );
+      const deletedEvent = db.query(
+        `DELETE FROM dates WHERE (event_date = ${changeString(
+          paramsDate,
+          "-"
+        )} AND event_title = ${(paramsTitle, " ")})`,
+        [changeString(paramsDate, "-"), changeString(paramsTitle, " ")]
+      );
 
       function changeString(str, sign) {
         return str.split("_").join(sign);
