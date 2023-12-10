@@ -6,17 +6,17 @@ const pool = new Pool({
   connectionString: process.env.POSTGRES_URL + "?sslmode=require",
 });
 
-const client = new Client({
-  user: USER,
-  host: HOST,
-  database: DATABASE,
-  password: PASSWORD,
-  port: 5432,
-});
+// const client = new Client({
+//   user: USER,
+//   host: HOST,
+//   database: DATABASE,
+//   password: PASSWORD,
+//   port: 5432,
+// });
 
-client.connect(function (err) {
+pool.connect(function (err) {
   if (err) throw err;
   console.log("Databese connect success!");
 });
 
-module.exports = client;
+module.exports = pool;

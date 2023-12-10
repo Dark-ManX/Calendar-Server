@@ -1,12 +1,13 @@
 const db = require("../db");
-// import { sql } from "@vercel/postgres";
 
 class DatesController {
   async createEvent(req, res) {
     try {
       const { date, title } = req.body;
+
+      console.log("params", date, title);
       const event = await db.query(
-        `INSERT INTO dates (event_date, event_title) VALUES (${date}, ${title})`,
+        `INSERT INTO dates VALUES (${date}, ${title})`,
         [date, title]
       );
 
