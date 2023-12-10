@@ -6,11 +6,10 @@ class DatesController {
       const { date, title } = req.body;
 
       console.log("params", date, title);
-      const event = await db.query(
-        `INSERT INTO dates VALUES (${date}, ${title})`
-        // ,
-        // [date, title]
-      );
+      const event = await db.query(`INSERT INTO dates VALUES ($1, $2)`, [
+        date,
+        title,
+      ]);
 
       res.status(201).json({
         code: 201,
@@ -48,10 +47,7 @@ class DatesController {
       const [paramsDate, paramsTitle] = event.split("-");
 
       const deletedEvent = db.query(
-        `DELETE FROM dates WHERE (event_date = ${changeString(
-          paramsDate,
-          "-"
-        )} AND event_title = ${(paramsTitle, " ")})`,
+        `DELETE FROM dates WHERE (event_date = $1 AND event_title = $2)`,
         [changeString(paramsDate, "-"), changeString(paramsTitle, " ")]
       );
 
