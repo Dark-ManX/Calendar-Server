@@ -45,10 +45,6 @@ class DatesController {
     try {
       const { event } = req.params;
       const [paramsDate, paramsTitle] = event.split("-");
-      console.log(
-        changeString(paramsDate, "-"),
-        changeString(paramsTitle, " ")
-      );
 
       const deletedEvent = db.query(
         `DELETE FROM dates WHERE (event_date = $1 AND event_title = $2)`,
